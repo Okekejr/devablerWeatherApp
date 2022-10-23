@@ -1,7 +1,12 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import { Weather } from "../types/weather";
 
-export const Dashboard: FC = () => {
+interface Props extends BoxProps {
+  data: Weather['weatherData'];
+}
+
+export const Dashboard: FC<Props> = ({ ...rest }) => {
   return (
     <Box
       backgroundColor="primary.100"
@@ -12,6 +17,7 @@ export const Dashboard: FC = () => {
       minHeight="20rem"
       maxWidth="39rem"
       padding="5px"
+      {...rest}
     >
       <Flex flexDirection="row" flexWrap="wrap" justifyContent="space-between">
         <Box>

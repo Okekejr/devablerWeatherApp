@@ -1,12 +1,13 @@
-import { Box, BoxProps, Flex, Text } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import { FC } from "react";
 import { Weather } from "../types/weather";
+import { Days } from "./Days";
 
 interface Props extends BoxProps {
-  data: Weather['weatherData'];
+  data: Weather["weatherData"];
 }
 
-export const Dashboard: FC<Props> = ({ ...rest }) => {
+export const Dashboard: FC<Props> = ({ data, ...rest }) => {
   return (
     <Box
       backgroundColor="primary.100"
@@ -19,78 +20,7 @@ export const Dashboard: FC<Props> = ({ ...rest }) => {
       padding="5px"
       {...rest}
     >
-      <Flex flexDirection="row" flexWrap="wrap" justifyContent="space-between">
-        <Box>
-          <Flex
-            backgroundColor="primary.bgColor"
-            flexDirection="column"
-            justifyContent="center"
-            textAlign="center"
-            width="38.2rem"
-            height="15rem"
-            borderTopLeftRadius="10px"
-            borderTopRightRadius="10px"
-            mb="0.3rem"
-          >
-            <Text>Today</Text>
-            <Text>19°c</Text>
-          </Flex>
-        </Box>
-        <Box>
-          <Flex
-            backgroundColor="primary.bgColor"
-            borderBottomLeftRadius="10px"
-            flexDirection="column"
-            justifyContent="center"
-            textAlign="center"
-            width="9rem"
-            height="12rem"
-          >
-            <Text>Today</Text>
-            <Text>19°c</Text>
-          </Flex>
-        </Box>
-        <Box>
-          <Flex
-            backgroundColor="primary.bgColor"
-            flexDirection="column"
-            justifyContent="center"
-            textAlign="center"
-            width="9rem"
-            height="12rem"
-          >
-            <Text>Today</Text>
-            <Text>19°c</Text>
-          </Flex>
-        </Box>
-        <Box>
-          <Flex
-            backgroundColor="primary.bgColor"
-            flexDirection="column"
-            justifyContent="center"
-            textAlign="center"
-            width="9rem"
-            height="12rem"
-          >
-            <Text>Today</Text>
-            <Text>19°c</Text>
-          </Flex>
-        </Box>
-        <Box>
-          <Flex
-            backgroundColor="primary.bgColor"
-            borderBottomRightRadius="10px"
-            flexDirection="column"
-            justifyContent="center"
-            textAlign="center"
-            width="10rem"
-            height="12rem"
-          >
-            <Text>Today</Text>
-            <Text>19°c</Text>
-          </Flex>
-        </Box>
-      </Flex>
+      <Days data={data} />
     </Box>
   );
 };

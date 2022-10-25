@@ -6,9 +6,9 @@ import { Weather } from "./types/weather";
 function App() {
   const [data, setData] = useState<Weather["weatherData"]>([]);
 
-  // useEffect(() => {
-  //   request("ottawa");
-  // }, []);
+  useEffect(() => {
+    request("ottawa");
+  }, []);
 
   const request = async function (city: string) {
     try {
@@ -32,7 +32,7 @@ function App() {
       setData(weatherData);
 
       // catching and displaying error gotten from the API search as a prompt
-      if (!weather.ok) throw new Error(`${weatherData.error.message}`);
+      if (!weather.ok) throw new Error('wait a brief moment before each query due to api query speed');
     } catch (error) {
       alert(error);
     }
@@ -45,16 +45,37 @@ function App() {
 
   return (
     <Box backgroundColor="appBackground">
-      <Flex flexDirection="column" minHeight="100vh" alignItems="center">
+      <Flex
+        flexDirection="column"
+        minHeight="100vh"
+        alignItems="center"
+        marginTop="2rem"
+      >
         <Box minWidth="40rem" mb="2rem">
           <Flex justifyContent="space-around">
-            <Text onClick={clicked} color="blue" cursor="pointer">
+            <Text
+              fontSize="1.5rem"
+              fontWeight="bold"
+              color="primary.text"
+              onClick={clicked}
+              cursor="pointer"
+            >
               OTTAWA
             </Text>
-            <Text onClick={clicked} cursor="pointer">
+            <Text
+              fontSize="1.5rem"
+              fontWeight="thin"
+              onClick={clicked}
+              cursor="pointer"
+            >
               MOSCOW
             </Text>
-            <Text onClick={clicked} cursor="pointer">
+            <Text
+              fontSize="1.5rem"
+              fontWeight="thin"
+              onClick={clicked}
+              cursor="pointer"
+            >
               TOKYO
             </Text>
           </Flex>

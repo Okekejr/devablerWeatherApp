@@ -1,10 +1,14 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dashboard } from "./components/Dashboard";
 import { Weather } from "./types/weather";
 
 function App() {
   const [data, setData] = useState<Weather["weatherData"]>([]);
+
+  // useEffect(() => {
+  //   request("ottawa");
+  // }, []);
 
   const request = async function (city: string) {
     try {
@@ -23,7 +27,6 @@ function App() {
       //converting response to json
       const data = weather.json();
       const weatherData = await data;
-      console.log(weatherData);
 
       // set data
       setData(weatherData);

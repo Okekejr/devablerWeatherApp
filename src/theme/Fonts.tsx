@@ -1,48 +1,38 @@
-import { Global } from "@emotion/react"
+import { Global } from "@emotion/react";
 
 export const fonts = {
   heading:
-    "'Poppins Bold', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
-  body: "'Poppins Regular', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
-  statusTags: "'Source Code Pro', 'monospace'",
-}
+    "'Sora', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
+  body: "'Sora', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
+};
 
 export const FontFaces = () => (
   <Global
     styles={`
-      @font-face {
-        font-family: 'Poppins Regular';
-        font-style: normal;
-        font-weight: normal;
-        font-display: swap;
-        src: url(/assets/fonts/Poppins-Regular.woff) format('woff');
-      }
 
       @font-face {
-        font-family: 'Poppins Bold';
-        font-style: normal;
-        font-weight: normal;
-        font-display: swap;
-        src: url(/assets/fonts/Poppins-Bold.woff) format('woff');
-      }
-
-      @font-face {
-        font-family: 'HafferXH';
-        font-style: normal;
-        font-weight: 600;
-        font-display: swap;
-        src: url(/assets/fonts/HafferXH-SemiBold.woff) format('woff'),
-             url(/assets/fonts/HafferXH-SemiBold.woff2) format('woff2');
-      }
-
-      @font-face {
-        font-family: 'Source Code Pro';
+        font-family: 'Sora';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url(/assets/fonts/SourceCodePro-Regular.woff) format('woff'),
-              url(/assets/fonts/SourceCodePro-Regular.woff2) format('woff2');
+        src: url(assets/fonts/Sora-Regular.ttf) format('tff');
+      }
+
+      @font-face {
+        font-family: 'Sora';
+        font-style: bold;
+        font-weight: 700;
+        font-display: swap;
+        src: url(/assets/fonts/Sora-Bold.ttf) format('tff');
+      }
+
+      @font-face {
+        font-family: 'Sora';
+        font-style: normal;
+        font-weight: 100;
+        font-display: swap;
+        src: url(/assets/fonts/Sora-Thin.ttf) format('tff');
       }
     `}
   />
-)
+);

@@ -21,6 +21,9 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
   const { current } = items;
   console.log(items);
 
+  const todayTemp = current?.temp?.toFixed(0);
+  const todayDesc = current?.weather[0].main;
+
   // extracting daily data timestamp from API
   const daily1 = items?.daily?.[1].dt;
   const daily2 = items?.daily?.[2].dt;
@@ -53,19 +56,23 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
               backgroundColor="primary.bgColor"
               flexDirection="column"
               justifyContent="center"
-              textAlign="center"
+              align="center"
               width="38.2rem"
               height="15rem"
               borderTopLeftRadius="10px"
               borderTopRightRadius="10px"
               mb="0.3rem"
             >
-              <Text>Today</Text>
+              <Text fontWeight="thin" fontSize="1.5rem">
+                Today
+              </Text>
               <Flex justifyContent="center" alignItems="center">
-                <WiCloudy size="8rem" />
+                <WiCloudy size="9rem" />
                 <Flex flexDirection="column">
-                  <Text>10°c</Text>
-                  <Text>Cloudy</Text>
+                  <Text fontSize="2rem">10°c</Text>
+                  <Text fontWeight="thin" fontSize="1.2rem">
+                    Cloudy
+                  </Text>
                 </Flex>
               </Flex>
             </Flex>
@@ -76,13 +83,15 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
               borderBottomLeftRadius="10px"
               flexDirection="column"
               justifyContent="center"
-              textAlign="center"
+              align="center"
               width="9rem"
               height="12rem"
             >
-              <Text>Today</Text>
-              <Text>...loading</Text>
-              <Text>19°c</Text>
+              <Text fontWeight="thin">Today</Text>
+              <WiCloudy size="6rem" />
+              <Text fontWeight="bold" fontSize="1.3rem">
+                19°c
+              </Text>
             </Flex>
           </Box>
           <Box>
@@ -90,13 +99,15 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
               backgroundColor="primary.bgColor"
               flexDirection="column"
               justifyContent="center"
-              textAlign="center"
+              align="center"
               width="9.5rem"
               height="12rem"
             >
-              <Text>Today</Text>
-              <Text>...loading</Text>
-              <Text>19°c</Text>
+              <Text fontWeight="thin">Today</Text>
+              <WiCloudy size="6rem" />
+              <Text fontWeight="bold" fontSize="1.3rem">
+                19°c
+              </Text>
             </Flex>
           </Box>
           <Box>
@@ -104,13 +115,15 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
               backgroundColor="primary.bgColor"
               flexDirection="column"
               justifyContent="center"
-              textAlign="center"
+              align="center"
               width="9.5rem"
               height="12rem"
             >
-              <Text>Today</Text>
-              <Text>...loading</Text>
-              <Text>19°c</Text>
+              <Text fontWeight="thin">Today</Text>
+              <WiCloudy size="6rem" />
+              <Text fontWeight="bold" fontSize="1.3rem">
+                19°c
+              </Text>
             </Flex>
           </Box>
           <Box>
@@ -119,13 +132,15 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
               borderBottomRightRadius="10px"
               flexDirection="column"
               justifyContent="center"
-              textAlign="center"
+              align="center"
               width="9.5rem"
               height="12rem"
             >
-              <Text>Today</Text>
-              <Text>...loading</Text>
-              <Text>19°c</Text>
+              <Text fontWeight="thin">Today</Text>
+              <WiCloudy size="6rem" />
+              <Text fontWeight="bold" fontSize="1.3rem">
+                19°c
+              </Text>
             </Flex>
           </Box>
         </Box>
@@ -153,12 +168,18 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
             borderTopRightRadius="10px"
             mb="0.3rem"
           >
-            <Text>Today</Text>
+            <Text fontWeight="thin" fontSize="1.5rem">
+              Today
+            </Text>
             <Flex justifyContent="center" alignItems="center">
-              {whatWeather(dailyDesc1, "8rem")}
+              {whatWeather(todayDesc, "8rem")}
               <Flex flexDirection="column">
-                <Text>{current?.temp?.toFixed(0)}°c</Text>
-                <Text>{current?.weather[0].main}</Text>
+                <Text fontWeight="bold" fontSize="2rem">
+                  {todayTemp}°c
+                </Text>
+                <Text fontWeight="thin" fontSize="1.2rem">
+                  {todayDesc}
+                </Text>
               </Flex>
             </Flex>
           </Flex>
@@ -173,9 +194,11 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
             width="9rem"
             height="12rem"
           >
-            <Text>{whatDay(daily1)}</Text>
+            <Text fontWeight="thin">{whatDay(daily1)}</Text>
             {whatWeather(dailyDesc1, "6rem")}
-            <Text>{dailyTemp1}°c</Text>
+            <Text fontWeight="bold" fontSize="1.3rem">
+              {dailyTemp1}°c
+            </Text>
           </Flex>
         </Box>
         <Box>
@@ -187,9 +210,11 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
             width="9.5rem"
             height="12rem"
           >
-            <Text>{whatDay(daily2)}</Text>
+            <Text fontWeight="thin">{whatDay(daily2)}</Text>
             {whatWeather(dailyDesc2, "6rem")}
-            <Text>{dailyTemp2}°c</Text>
+            <Text fontWeight="bold" fontSize="1.3rem">
+              {dailyTemp2}°c
+            </Text>
           </Flex>
         </Box>
         <Box>
@@ -201,9 +226,11 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
             width="9.5rem"
             height="12rem"
           >
-            <Text>{whatDay(daily3)}</Text>
+            <Text fontWeight="thin">{whatDay(daily3)}</Text>
             {whatWeather(dailyDesc3, "6rem")}
-            <Text>{dailyTemp3}°c</Text>
+            <Text fontWeight="bold" fontSize="1.3rem">
+              {dailyTemp3}°c
+            </Text>
           </Flex>
         </Box>
         <Box>
@@ -216,9 +243,11 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
             width="9.5rem"
             height="12rem"
           >
-            <Text>{whatDay(daily4)}</Text>
+            <Text fontWeight="thin">{whatDay(daily4)}</Text>
             {whatWeather(dailyDesc4, "6rem")}
-            <Text>{dailyTemp4}°c</Text>
+            <Text fontWeight="bold" fontSize="1.3rem">
+              {dailyTemp4}°c
+            </Text>
           </Flex>
         </Box>
       </Box>

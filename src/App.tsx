@@ -1,14 +1,20 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Flex,
+  FormControl,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 import { Dashboard } from "./components/Dashboard";
 import { Weather } from "./types/weather";
+import { CiSearch } from "react-icons/ci";
 
 function App() {
   const [data, setData] = useState<Weather["weatherData"]>([]);
-
-  useEffect(() => {
-    request("ottawa");
-  }, []);
+  const [search, setSearch] = useState("");
 
   const request = async function (city: string) {
     try {
@@ -32,53 +38,48 @@ function App() {
       setData(weatherData);
 
       // catching and displaying error gotten from the API search as a prompt
-      if (!weather.ok) throw new Error('wait a brief moment before each query due to api query speed');
+      if (!weather.ok)
+        throw new Error(
+          "wait a brief moment before each query due to api query speed"
+        );
     } catch (error) {
       alert(error);
     }
   };
 
-  const clicked = (event: React.MouseEvent<HTMLElement>) => {
-    const city = event.currentTarget.innerHTML;
-    request(city);
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    request(search);
+    setSearch('')
+  };
+
+  const onChangehandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const city = event.currentTarget.value;
+    setSearch(city);
   };
 
   return (
-    <Box backgroundColor="appBackground">
+    <Box >
       <Flex
         flexDirection="column"
         minHeight="100vh"
         alignItems="center"
         marginTop="2rem"
       >
-        <Box minWidth="40rem" mb="2rem">
-          <Flex justifyContent="space-around">
-            <Text
-              fontSize="1.5rem"
-              fontWeight="bold"
-              color="primary.text"
-              onClick={clicked}
-              cursor="pointer"
-            >
-              OTTAWA
-            </Text>
-            <Text
-              fontSize="1.5rem"
-              fontWeight="thin"
-              onClick={clicked}
-              cursor="pointer"
-            >
-              MOSCOW
-            </Text>
-            <Text
-              fontSize="1.5rem"
-              fontWeight="thin"
-              onClick={clicked}
-              cursor="pointer"
-            >
-              TOKYO
-            </Text>
-          </Flex>
+        <Box minWidth="30rem" mb="2rem">
+          <form onSubmit={submitHandler}>
+            <FormControl>
+              <InputGroup>
+                <Input
+                  type="text"
+                  value={search}
+                  onChange={onChangehandler}
+                  required={true}
+                />
+                <InputRightElement children={<CiSearch />} />
+              </InputGroup>
+            </FormControl>
+          </form>
         </Box>
         <Dashboard data={data} />
       </Flex>

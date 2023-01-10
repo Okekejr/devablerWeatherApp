@@ -53,7 +53,8 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
         <Box display="flex" flexWrap="wrap" justifyContent="space-between">
           <Box>
             <Flex
-              backgroundColor="primary.bgColor"
+              backgroundColor="transparent"
+              color='primary.100'
               flexDirection="column"
               justifyContent="center"
               align="center"
@@ -79,7 +80,7 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
           </Box>
           <Box>
             <Flex
-              backgroundColor="primary.bgColor"
+              backgroundColor="primary.text"
               borderBottomLeftRadius="10px"
               flexDirection="column"
               justifyContent="center"
@@ -96,7 +97,7 @@ export const Days: FC<Props> = ({ data, ...rest }) => {
           </Box>
           <Box>
             <Flex
-              backgroundColor="primary.bgColor"
+              backgroundColor="primary.text"
               flexDirection="column"
               justifyContent="center"
               align="center"

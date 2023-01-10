@@ -10,7 +10,7 @@ interface Props extends BoxProps {
 export const Dashboard: FC<Props> = ({ data, ...rest }) => {
   return (
     <Box
-      backgroundColor="primary.100"
+      backgroundColor="transparent"
       boxShadow="1px 6px 4px 7px rgba(0, 0, 0, 0.1)"
       borderRadius="15px"
       borderColor="primary.100"
